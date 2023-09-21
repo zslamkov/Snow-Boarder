@@ -6,11 +6,13 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] float torqueAmount = 10f;
     Rigidbody2D rb2d;
+    SurfaceEffector2D surfaceEffector2D;
 
     // Start is called before the first frame update
     void Start()
     {
         rb2d =  GetComponent<Rigidbody2D>();
+        surfaceEffector2D  = FindObjectOfType<SurfaceEffector2D>();
     }
 
     // Update is called once per frame
@@ -19,7 +21,7 @@ public class PlayerController : MonoBehaviour
         if(Input.GetKey(KeyCode.LeftArrow)){
             rb2d.AddTorque(torqueAmount);
         }
-        if(Input.GetKey(KeyCode.RightArrow)){
+        else if(Input.GetKey(KeyCode.RightArrow)){
             rb2d.AddTorque(-torqueAmount);
         }
     }
